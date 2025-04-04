@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcohol Use Disorders: 1990-2019 Timelapse</title>
+    <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+    <link rel="icon" href="data:," /> <!-- Prevent favicon loading -->
+</head>
+<body>
+    <div id="container">
+        <div id="map"></div>
+        <div id="map-title" class="map-title">Alcohol Use Disorders (1990)</div>
+        <div class="info-box"><footer>ℹ️ Use the controls below to play/pause the timelapse</footer></div>
+        <div class="legend">
+            <strong>Alcohol Use Disorders </strong><br><small><b>Cases per 1000 people</b></small><br><br>
+            <div class="legend-item"><div class="legend-color" style="background:#feebe2;"></div><span>&lt;16</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#fbb4b9;"></div><span>16-20</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#f768a1;"></div><span>20-24</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#c51b8a;"></div><span>24-28</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#7a0177;"></div><span>&gt;28</span></div>
+        </div>
+        <div class="mapboxgl-ctrl-scale-line"></div>
+        <div class="copyright"><small>© 2025 Adam M.P. - Geoinformatics Engineer & Tsingenopoulos V. - Geologist & GIS Engineer| Map data © Eurostat, MapLibre contributors</small></div>
+        <div class="timelapse-controls">
+            <div class="year-display">Year: <span id="current-year">1990</span></div>
+            <div class="timelapse-slider-container">
+                <button id="decrease-year" class="year-button">-</button>
+                <input type="range" min="1990" max="2019" value="1990" class="timelapse-slider" id="year-slider">
+                <button id="increase-year" class="year-button">+</button>
+            </div>
+            <button class="play-button" id="play-button">Play</button>
+            <div class="speed-control">
+                <label for="speed-slider">Speed:</label>
+                <input type="range" min="1" max="10" value="5" id="speed-slider">
+            </div>
+        </div>
+        <div class="chart-container" id="chart-container" style="display: none;">
+            <canvas id="trend-chart"></canvas>
+        </div>
+        <button class="play-button" id="show-stats-button">Show Statistics 📉</button>
+        <button id="toggle-3d-button" aria-label="Toggle 3D View">3D View 🌐</button>
+        <div id="loading" class="loading">Loading map data...</div>
+        <div id="error" class="error" style="display:none;"></div>
+    </div>
+    <script src="./script.js"></script>   
+</body>
+</html>
