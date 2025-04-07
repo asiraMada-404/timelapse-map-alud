@@ -211,11 +211,33 @@ function setupTimelapseControls() {
     });
     
     // Speed slider
+    speedSlider.oninput = function() {
+        var output = document.getElementById("speed-value");
+        output.innerHTML = `${speedSlider.value}x`; // Display the selected speed value with 'x'
+    };
+
     speedSlider.addEventListener('input', () => {
         speed = parseInt(speedSlider.value);
+
         if (isPlaying) {
-            stopAnimation();
-            startAnimation();
+            clearInterval(animationInterval);
+            const delay = 1100 - (speed * 100); // Adjust delay based on speed
+            animationInterval = setInterval(() => {
+                const currentIndex = allYears.indexOf(currentYear);
+                const nextIndex = (currentIndex + 1) % allYears.length;
+
+                if (nextIndex === 0) {
+                    currentYear = allYears[0];
+                    stopAnimation();
+                    document.getElementById('play-button').textContent = 'Play';
+                } else {
+                    currentYear = allYears[nextIndex];
+                }
+
+                document.getElementById('year-slider').value = currentYear;
+                updateYearDisplay();
+                updateMapData();
+            }, delay);
         }
     });
 
