@@ -8,6 +8,7 @@ body { margin: 0; padding: 0; width: 100%; height: 100%; }
 #map {
     width: 100%;
     height: 100%;
+    transition: smooth 0.3s ease-out;
 }
 .legend {
     position: absolute;
@@ -138,7 +139,7 @@ body { margin: 0; padding: 0; width: 100%; height: 100%; }
     margin-bottom: 5px;
 }
 .play-button:hover {
-    background: #383170;
+    background: #20156f;
     box-shadow: #333 0 0 5px;
 }
 .year-display {
@@ -153,6 +154,28 @@ body { margin: 0; padding: 0; width: 100%; height: 100%; }
 .speed-control label {
     margin-right: 10px;
     font-size: 12px;
+}
+.speed-control input {
+    width: 50px;
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 12px;
+    text-align: center;
+    transition: smooth 0.3s ease-out;
+}
+.speed-control span {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.speed-control input[type="range"] {
+    width: 100%;
+    margin: 0 10px;
+    height: 5px;
+    cursor: pointer;
+    outline: none;
+    transition: smooth 0.3s ease-in-out;
 }
 .chart-container {
     position: fixed;
@@ -185,7 +208,7 @@ body { margin: 0; padding: 0; width: 100%; height: 100%; }
 }
 
 #show-stats-button:hover {
-    background: #383170;
+    background: #20156f;
     box-shadow: #333 0 0 5px;
 }
 
@@ -203,12 +226,31 @@ body { margin: 0; padding: 0; width: 100%; height: 100%; }
     font-size: 16px;
     font-weight: bold;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+
 }
 
 #toggle-3d-button:hover {
     background: #383170;
     box-shadow: #333 0 0 5px;
+    animation-duration: 1s;
+    animation-name: sheen;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-delay: 0.3s;
+    animation-play-state: running;
 }
+
+@keyframes sheen {
+    0% {
+        background: #4c51af;
+    }
+    100% {
+        background: #20156f;
+    }
+}
+
 
 .year-button {
     background: #92adfd;
@@ -223,7 +265,7 @@ body { margin: 0; padding: 0; width: 100%; height: 100%; }
 }
 
 .year-button:hover {
-    background: #383170;
+    background: #20156f;
     color: white;
     box-shadow: #333 0 0 5px;
 }
